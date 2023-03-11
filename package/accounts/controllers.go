@@ -15,4 +15,6 @@ func RegisterRoutes(router *gin.Engine, db *gorm.DB) {
 	}
 	routes := router.Group("/accounts")
 	routes.POST("/signup", h.SignUp)
+	routes.POST("/login", h.LoginHandle)
+	routes.GET("/get-user", h.getUser)
 }

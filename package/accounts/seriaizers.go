@@ -7,3 +7,8 @@ type createUserBody struct {
 	Phone_number string `json:"phone_number"`
 	Password     string `json:"password" binding:"required"`
 }
+
+type LoginBody struct {
+	Email    string `json:"email" binding:"required"`
+	Password string `json:"password" binding:"required"`
+}
