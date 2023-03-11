@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/rs/cors"
 )
 
 func main() {
@@ -20,6 +21,15 @@ func main() {
 
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"data": "Welcome to gather api"})
+	})
+
+	router.Use(func(c *gin.Context) {
+		cors.New(cors.Options{
+			AllowedOrigins: []string{"*"},
+			AllowedMethods: []string{"GET", "POST", "PUT", "DELETE"},
+			AllowedHeaders: []string{"Origin", "Content-Type", "Accept", "Authorization"},
+		}).ServeHTTP(c.Writer, c.Request, func(w http.ResponseWriter, r *http.Request) {
+		})
 	})
 
 	accounts.RegisterRoutes(router, dbHandler)

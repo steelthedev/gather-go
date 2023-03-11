@@ -12,11 +12,16 @@ func (h handler) SignUp(c *gin.Context) {
 
 	body := createUserBody{}
 
+	var user models.User
+
 	if err := c.BindJSON(&body); err != nil {
 		c.AbortWithError(http.StatusBadRequest, err)
 	}
 
-	var user models.User
+	if result := h.DB.Where("Email=?", body.Email).First(&user); result.Error == nil {
+		c.AbortWithStatusJSON(http.StatusAlreadyReported, gin.H{"data": "User already exist, please login"})
+		return
+	}
 
 	user.Username = body.Username
 	user.Email = body.Email
@@ -30,5 +35,5 @@ func (h handler) SignUp(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusCreated, &user)
+	c.IndentedJSON(http.StatusCreated, gin.H{"data": user, "status": 201})
 }

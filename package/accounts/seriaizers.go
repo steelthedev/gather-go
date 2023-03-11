@@ -1,7 +1,7 @@
 package accounts
 
 type createUserBody struct {
-	Username     string `json:"username" binding:"required"`
+	Username     string `json:"username"`
 	Email        string `json:"email" binding:"required"`
 	Full_name    string `json:"full_name"`
 	Phone_number string `json:"phone_number"`
