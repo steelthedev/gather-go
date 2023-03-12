@@ -21,6 +21,7 @@ func Init(url string) *gorm.DB {
 
 	db.AutoMigrate(&models.User{})
 	db.AutoMigrate(&room_models.Room{})
+	db.AutoMigrate(&room_models.RoomMember{})
 
 	return db
 
