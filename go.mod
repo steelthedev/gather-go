@@ -3,6 +3,8 @@ module gather-go
 go 1.18
 
 require (
+	github.com/AgoraIO-Community/go-tokenbuilder v1.0.0 // indirect
+	github.com/AgoraIO/Tools/DynamicKey/AgoraDynamicKey/go/src v0.0.0-20230202083000-127831aa0f5d // indirect
 	github.com/bytedance/sonic v1.8.0 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect

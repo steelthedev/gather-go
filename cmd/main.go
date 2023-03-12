@@ -11,11 +11,7 @@ import (
 )
 
 func main() {
-	// viper.SetConfigFile("./package/connections/envs/.env")
-	// viper.ReadInConfig()
 
-	// dbURL := viper.Get("DB_URL").(string)
-	// port := viper.Get("PORT").(string)
 	dbURL := "postgres://steel:sentinel2000@127.0.0.1:5432/gather"
 	router := gin.Default()
 	dbHandler := db.Init(dbURL)
