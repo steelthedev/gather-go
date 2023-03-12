@@ -3,6 +3,7 @@ package main
 import (
 	"gather-go/package/accounts"
 	"gather-go/package/connections/db"
+	"gather-go/package/room"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -33,6 +34,7 @@ func main() {
 	})
 
 	accounts.RegisterRoutes(router, dbHandler)
+	room.RegisterRoutes(router, dbHandler)
 
 	router.Run(":8000")
 }

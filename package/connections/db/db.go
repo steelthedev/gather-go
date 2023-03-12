@@ -2,6 +2,8 @@ package db
 
 import (
 	"gather-go/package/accounts/models"
+	"gather-go/package/room/room_models"
+
 	"log"
 
 	"gorm.io/driver/postgres"
@@ -18,6 +20,8 @@ func Init(url string) *gorm.DB {
 	}
 
 	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&room_models.Room{})
+
 	return db
 
 }
