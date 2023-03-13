@@ -7,8 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h handler) getMember(c *gin.Context) {
-
+func (h handler) deleteMember(c *gin.Context) {
 	body := RoomMemberBody{}
 	if err := c.BindJSON(&body); err != nil {
 		c.AbortWithError(http.StatusBadRequest, err)
@@ -21,5 +20,6 @@ func (h handler) getMember(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusNotFound, gin.H{"message": "User cannot be found"})
 		return
 	}
-	c.IndentedJSON(http.StatusOK, &room_member)
+	h.DB.Delete((&room_member))
+	c.IndentedJSON(http.StatusOK, gin.H{"messgae": "Member successfully deleted"})
 }
