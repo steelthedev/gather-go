@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	dbURL := "postgres://steel:sentinel2000@127.0.0.1:5432/gather"
+	dbURL := "postgres://steel:password@127.0.0.1:5432/gather"
 	router := gin.Default()
 	dbHandler := db.Init(dbURL)
 
